@@ -682,9 +682,7 @@ class OVModelForVisualCausalLMIntegrationTest(unittest.TestCase):
             if model_arch in ["minicpmo"]:
                 # `generate` method for minicpmo requires tokenizer
                 # Use original model path for tokenizer if testing quantized model
-                tokenizer_path = model_id
-                if "6mb" in model_id:
-                    tokenizer_path = model_id.replace("-6mb", "")
+                tokenizer_path = transformers_model_path
                 tokenizer = AutoTokenizer.from_pretrained(
                     tokenizer_path, trust_remote_code=model_arch in self.REMOTE_CODE_MODELS
                 )
