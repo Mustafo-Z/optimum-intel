@@ -132,7 +132,7 @@ MODEL_NAMES = {
     "minicpmv": "optimum-intel-internal-testing/tiny-random-minicpmv-2_6",
     "minicpmo": os.getenv(
         "MINICPMO_MODEL_PATH",
-        "optimum-intel-internal-testing/tiny-random-MiniCPM-o-2_6-mini"
+        "optimum-intel-internal-testing/tiny-random-MiniCPM-o-2_6-6mb"
     ),    
     "mistral": "optimum-intel-internal-testing/tiny-random-mistral",
     "mistral-nemo": "optimum-intel-internal-testing/tiny-random-mistral-nemo",
