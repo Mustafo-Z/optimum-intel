@@ -562,7 +562,7 @@ class OVModelForVisualCausalLMIntegrationTest(unittest.TestCase):
             loading_kwargs = {"_attn_implementation": "sdpa"}
         
         transformers_model_path = model_id
-        if model_arch == "minicpmo" and "6mb" in model_id:
+        if model_arch == "minicpmo" and "mini" in model_id:
 
             transformers_model_path = "optimum-intel-internal-testing/tiny-random-MiniCPM-o-2_6"
         
@@ -582,7 +582,7 @@ class OVModelForVisualCausalLMIntegrationTest(unittest.TestCase):
         set_seed(SEED)
         # For quantized models, load directly without export (already quantized)
         should_export = True
-        if model_arch == "minicpmo" and "6mb" in model_id:
+        if model_arch == "minicpmo" and "mini" in model_id:
             # Model is already quantized, load it directly
             should_export = False
         ov_model = OVModelForVisualCausalLM.from_pretrained(
@@ -821,7 +821,7 @@ class OVModelForVisualCausalLMIntegrationTest(unittest.TestCase):
         model_id = MODEL_NAMES[model_arch]
         # For quantized models, load directly without export (already quantized)
         should_export = True
-        if model_arch == "minicpmo" and "6mb" in model_id:
+        if model_arch == "minicpmo" and "mini" in model_id:
             should_export = False
         model = OVModelForVisualCausalLM.from_pretrained(
             model_id, export=should_export, trust_remote_code=model_arch in self.REMOTE_CODE_MODELS, device=OPENVINO_DEVICE
@@ -829,7 +829,7 @@ class OVModelForVisualCausalLMIntegrationTest(unittest.TestCase):
 
         # For quantized models, use original model path for tokenizer
         tokenizer_path = model_id
-        if model_arch == "minicpmo" and "6mb" in model_id:
+        if model_arch == "minicpmo" and "mini" in model_id:
             tokenizer_path = "optimum-intel-internal-testing/tiny-random-MiniCPM-o-2_6"
         tokenizer = AutoTokenizer.from_pretrained(tokenizer_path, trust_remote_code=model_arch in self.REMOTE_CODE_MODELS)
         question = "Describe image"
@@ -899,7 +899,7 @@ class OVModelForVisualCausalLMIntegrationTest(unittest.TestCase):
 
         # For quantized models, use original model path for processor/tokenizer
         processor_path = model_id
-        if model_arch == "minicpmo" and "6mb" in model_id:
+        if model_arch == "minicpmo" and "mini" in model_id:
             # Use the original model for processor to match transformers comparison
             processor_path = "optimum-intel-internal-testing/tiny-random-MiniCPM-o-2_6"
 
@@ -918,7 +918,7 @@ class OVModelForVisualCausalLMIntegrationTest(unittest.TestCase):
             preprocessors = {"processor": None, "tokenizer": tokenizer, "config": config}
         else:
             # For minicpmo with quantized models, use original model's processor path
-            if model_arch == "minicpmo" and "6mb" in model_id:
+            if model_arch == "minicpmo" and "mini" in model_id:
                 # Use the original 50k model (not quantized) for processor
                 # The processor should be the same regardless of quantization
                 processor = AutoProcessor.from_pretrained(
