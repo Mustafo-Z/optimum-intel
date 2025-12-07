@@ -1,0 +1,68 @@
+============================= test session starts =============================
+platform win32 -- Python 3.11.4, pytest-7.4.4, pluggy-1.6.0 -- C:\Users\jumpy\Desktop\Mustafo stuff\Intel\technical\optimum-intel\venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\jumpy\Desktop\Mustafo stuff\Intel\technical\optimum-intel
+configfile: pyproject.toml
+plugins: anyio-4.12.0, langsmith-0.4.50
+collecting ... collected 99 items / 98 deselected / 1 selected
+
+tests/openvino/test_seq2seq.py::OVModelForVisualCausalLMIntegrationTest::test_compare_to_transformers_17_minicpmo FAILED [100%]
+
+================================== FAILURES ===================================
+_ OVModelForVisualCausalLMIntegrationTest.test_compare_to_transformers_17_minicpmo _
+venv\Lib\site-packages\parameterized\parameterized.py:620: in standalone_func
+    return func(*(a + p.args), **p.kwargs, **kw)
+tests\openvino\test_seq2seq.py:582: in test_compare_to_transformers
+    preprocessors = self.get_preprocessors(model_arch)
+tests\openvino\test_seq2seq.py:909: in get_preprocessors
+    processor = AutoProcessor.from_pretrained(
+venv\Lib\site-packages\transformers\models\auto\processing_auto.py:343: in from_pretrained
+    return processor_class.from_pretrained(
+venv\Lib\site-packages\transformers\processing_utils.py:1079: in from_pretrained
+    args = cls._get_arguments_from_pretrained(pretrained_model_name_or_path, **kwargs)
+venv\Lib\site-packages\transformers\processing_utils.py:1143: in _get_arguments_from_pretrained
+    args.append(attribute_class.from_pretrained(pretrained_model_name_or_path, **kwargs))
+venv\Lib\site-packages\transformers\models\auto\tokenization_auto.py:994: in from_pretrained
+    return tokenizer_class.from_pretrained(
+venv\Lib\site-packages\transformers\tokenization_utils_base.py:2062: in from_pretrained
+    return cls._from_pretrained(
+venv\Lib\site-packages\transformers\tokenization_utils_base.py:2100: in _from_pretrained
+    slow_tokenizer = (cls.slow_tokenizer_class)._from_pretrained(
+venv\Lib\site-packages\transformers\tokenization_utils_base.py:2302: in _from_pretrained
+    tokenizer = cls(*init_inputs, **init_kwargs)
+venv\Lib\site-packages\transformers\models\qwen2\tokenization_qwen2.py:172: in __init__
+    with open(vocab_file, encoding="utf-8") as vocab_handle:
+E   TypeError: expected str, bytes or os.PathLike object, not NoneType
+---------------------------- Captured stderr call -----------------------------
+Using a slow image processor as `use_fast` is unset and a slow processor was saved with this model. `use_fast=True` will be the default behavior in v4.52, even if the model was saved with a slow processor. This will result in minor differences in outputs. You'll still be able to use a slow processor with `use_fast=False`.
+The tokenizer class you load from this checkpoint is not the same type as the class this function is called from. It may result in unexpected tokenization. 
+The tokenizer class you load from this checkpoint is 'MiniCPMOTokenizer'. 
+The class this function is called from is 'Qwen2Tokenizer'.
+The tokenizer class you load from this checkpoint is not the same type as the class this function is called from. It may result in unexpected tokenization. 
+The tokenizer class you load from this checkpoint is 'MiniCPMOTokenizer'. 
+The class this function is called from is 'Qwen2Tokenizer'.
+============================== warnings summary ===============================
+venv\Lib\site-packages\openvino\runtime\__init__.py:10
+  C:\Users\jumpy\Desktop\Mustafo stuff\Intel\technical\optimum-intel\venv\Lib\site-packages\openvino\runtime\__init__.py:10: DeprecationWarning: The `openvino.runtime` module is deprecated and will be removed in the 2026.0 release. Please replace `openvino.runtime` with `openvino`.
+    warnings.warn(
+
+tests/openvino/test_seq2seq.py::OVModelForVisualCausalLMIntegrationTest::test_compare_to_transformers_17_minicpmo
+tests/openvino/test_seq2seq.py::OVModelForVisualCausalLMIntegrationTest::test_compare_to_transformers_17_minicpmo
+  <unknown>:313: DeprecationWarning: invalid escape sequence '\('
+
+tests/openvino/test_seq2seq.py::OVModelForVisualCausalLMIntegrationTest::test_compare_to_transformers_17_minicpmo
+tests/openvino/test_seq2seq.py::OVModelForVisualCausalLMIntegrationTest::test_compare_to_transformers_17_minicpmo
+  <unknown>:315: DeprecationWarning: invalid escape sequence '\('
+
+tests/openvino/test_seq2seq.py::OVModelForVisualCausalLMIntegrationTest::test_compare_to_transformers_17_minicpmo
+  C:\Users\jumpy\Desktop\Mustafo stuff\Intel\technical\optimum-intel\venv\Lib\site-packages\transformers\models\auto\image_processing_auto.py:604: FutureWarning: The image_processor_class argument is deprecated and will be removed in v4.42. Please use `slow_image_processor_class`, or `fast_image_processor_class` instead
+    warnings.warn(
+
+tests/openvino/test_seq2seq.py::OVModelForVisualCausalLMIntegrationTest::test_compare_to_transformers_17_minicpmo
+  C:\Users\jumpy\.cache\huggingface\modules\transformers_modules\openbmb\MiniCPM-o-2_6\509805e84db1c84f154034d71a21c4f2331e6e11\modeling_minicpmo.py:131: UserWarning: Could not load processor: expected str, bytes or os.PathLike object, not NoneType. Continuing without processor.
+    warnings.warn(f"Could not load processor: {e}. Continuing without processor.")
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED tests/openvino/test_seq2seq.py::OVModelForVisualCausalLMIntegrationTest::test_compare_to_transformers_17_minicpmo
+================ 1 failed, 98 deselected, 7 warnings in 16.51s ================

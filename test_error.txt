@@ -1,0 +1,100 @@
+============================= test session starts =============================
+platform win32 -- Python 3.11.4, pytest-7.4.4, pluggy-1.6.0 -- C:\Users\jumpy\Desktop\Mustafo stuff\Intel\technical\optimum-intel\venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\jumpy\Desktop\Mustafo stuff\Intel\technical\optimum-intel
+configfile: pyproject.toml
+plugins: anyio-4.12.0, langsmith-0.4.50
+collecting ... collected 1 item
+
+Using a slow image processor as `use_fast` is unset and a slow processor was saved with this model. `use_fast=True` will be the default behavior in v4.52, even if the model was saved with a slow processor. This will result in minor differences in outputs. You'll still be able to use a slow processor with `use_fast=False`.
+`loss_type=None` was set in the config but it is unrecognised.Using the default loss: `ForCausalLMLoss`.
+`generation_config` default values have been modified to match model-specific defaults: {'bos_token_id': 151643}. If this is not desired, please set these values explicitly.
+`generation_config` default values have been modified to match model-specific defaults: {'bos_token_id': 151643, 'eos_token_id': 151645}. If this is not desired, please set these values explicitly.
+The `seen_tokens` attribute is deprecated and will be removed in v4.41. Use the `cache_position` model input instead.
+tests/openvino/test_seq2seq.py::OVModelForVisualCausalLMIntegrationTest::test_compare_to_transformers_17_minicpmo FAILED
+
+================================== FAILURES ===================================
+_ OVModelForVisualCausalLMIntegrationTest.test_compare_to_transformers_17_minicpmo _
+
+a = (<test_seq2seq.OVModelForVisualCausalLMIntegrationTest testMethod=test_compare_to_transformers_17_minicpmo>,)
+kw = {}
+
+    @wraps(func)
+    def standalone_func(*a, **kw):
+>       return func(*(a + p.args), **p.kwargs, **kw)
+
+venv\Lib\site-packages\parameterized\parameterized.py:620: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\openvino\test_seq2seq.py:687: in test_compare_to_transformers
+    self.assertTrue(
+E   AssertionError: False is not true : generation config : GenerationConfig {
+E     "max_new_tokens": 10,
+E     "min_new_tokens": 10
+E   }
+E   , transformers output tensor([[ 26895,  77475,  69617,  51319,  51866, 124278, 111950,  17911,  72744,
+E            141080]]), ov_model output tensor([[ 26895,  77475,  69617,  51319,  17911,  72744, 141080, 148989,  51866,
+E            124278]])
+------------------------------ Captured log call ------------------------------
+ERROR    openvino.frontend.pytorch.utils:utils.py:210 Failed to build model wrapper.
+============================== warnings summary ===============================
+venv\Lib\site-packages\openvino\runtime\__init__.py:10
+  C:\Users\jumpy\Desktop\Mustafo stuff\Intel\technical\optimum-intel\venv\Lib\site-packages\openvino\runtime\__init__.py:10: DeprecationWarning: The `openvino.runtime` module is deprecated and will be removed in the 2026.0 release. Please replace `openvino.runtime` with `openvino`.
+    warnings.warn(
+
+tests/openvino/test_seq2seq.py::OVModelForVisualCausalLMIntegrationTest::test_compare_to_transformers_17_minicpmo
+tests/openvino/test_seq2seq.py::OVModelForVisualCausalLMIntegrationTest::test_compare_to_transformers_17_minicpmo
+tests/openvino/test_seq2seq.py::OVModelForVisualCausalLMIntegrationTest::test_compare_to_transformers_17_minicpmo
+tests/openvino/test_seq2seq.py::OVModelForVisualCausalLMIntegrationTest::test_compare_to_transformers_17_minicpmo
+  <unknown>:313: DeprecationWarning: invalid escape sequence '\('
+
+tests/openvino/test_seq2seq.py::OVModelForVisualCausalLMIntegrationTest::test_compare_to_transformers_17_minicpmo
+tests/openvino/test_seq2seq.py::OVModelForVisualCausalLMIntegrationTest::test_compare_to_transformers_17_minicpmo
+tests/openvino/test_seq2seq.py::OVModelForVisualCausalLMIntegrationTest::test_compare_to_transformers_17_minicpmo
+tests/openvino/test_seq2seq.py::OVModelForVisualCausalLMIntegrationTest::test_compare_to_transformers_17_minicpmo
+  <unknown>:315: DeprecationWarning: invalid escape sequence '\('
+
+tests/openvino/test_seq2seq.py::OVModelForVisualCausalLMIntegrationTest::test_compare_to_transformers_17_minicpmo
+  C:\Users\jumpy\Desktop\Mustafo stuff\Intel\technical\optimum-intel\venv\Lib\site-packages\transformers\models\auto\image_processing_auto.py:604: FutureWarning: The image_processor_class argument is deprecated and will be removed in v4.42. Please use `slow_image_processor_class`, or `fast_image_processor_class` instead
+    warnings.warn(
+
+tests/openvino/test_seq2seq.py::OVModelForVisualCausalLMIntegrationTest::test_compare_to_transformers_17_minicpmo
+  C:\Users\jumpy\.cache\huggingface\modules\transformers_modules\openbmb\MiniCPM-o-2_6\509805e84db1c84f154034d71a21c4f2331e6e11\resampler.py:490: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+    embed_dim == embed_dim_to_check
+
+tests/openvino/test_seq2seq.py::OVModelForVisualCausalLMIntegrationTest::test_compare_to_transformers_17_minicpmo
+  C:\Users\jumpy\.cache\huggingface\modules\transformers_modules\openbmb\MiniCPM-o-2_6\509805e84db1c84f154034d71a21c4f2331e6e11\resampler.py:497: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+    assert head_dim * num_heads == embed_dim, f"embed_dim {embed_dim} not divisible by num_heads {num_heads}"
+
+tests/openvino/test_seq2seq.py::OVModelForVisualCausalLMIntegrationTest::test_compare_to_transformers_17_minicpmo
+  C:\Users\jumpy\.cache\huggingface\modules\transformers_modules\openbmb\MiniCPM-o-2_6\509805e84db1c84f154034d71a21c4f2331e6e11\resampler.py:504: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+    assert key.shape == value.shape, f"key shape {key.shape} does not match value shape {value.shape}"
+
+tests/openvino/test_seq2seq.py::OVModelForVisualCausalLMIntegrationTest::test_compare_to_transformers_17_minicpmo
+  C:\Users\jumpy\.cache\huggingface\modules\transformers_modules\openbmb\MiniCPM-o-2_6\509805e84db1c84f154034d71a21c4f2331e6e11\resampler.py:594: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+    assert key_padding_mask.shape == (
+
+tests/openvino/test_seq2seq.py::OVModelForVisualCausalLMIntegrationTest::test_compare_to_transformers_17_minicpmo
+  C:\Users\jumpy\.cache\huggingface\modules\transformers_modules\openbmb\MiniCPM-o-2_6\509805e84db1c84f154034d71a21c4f2331e6e11\resampler.py:618: TracerWarning: Converting a tensor to a Python float might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+    q_scaled = q / math.sqrt(E)
+
+tests/openvino/test_seq2seq.py::OVModelForVisualCausalLMIntegrationTest::test_compare_to_transformers_17_minicpmo
+  C:\Users\jumpy\Desktop\Mustafo stuff\Intel\technical\optimum-intel\venv\Lib\site-packages\transformers\cache_utils.py:457: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+    or not self.key_cache[layer_idx].numel()  # the layer has no cache
+
+tests/openvino/test_seq2seq.py::OVModelForVisualCausalLMIntegrationTest::test_compare_to_transformers_17_minicpmo
+  C:\Users\jumpy\Desktop\Mustafo stuff\Intel\technical\optimum-intel\venv\Lib\site-packages\transformers\models\qwen2\modeling_qwen2.py:719: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+    if attention_mask.shape[-1] > target_length:
+
+tests/openvino/test_seq2seq.py::OVModelForVisualCausalLMIntegrationTest::test_compare_to_transformers_17_minicpmo
+  C:\Users\jumpy\Desktop\Mustafo stuff\Intel\technical\optimum-intel\venv\Lib\site-packages\transformers\cache_utils.py:440: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+    elif (
+
+tests/openvino/test_seq2seq.py::OVModelForVisualCausalLMIntegrationTest::test_compare_to_transformers_17_minicpmo
+  C:\Users\jumpy\Desktop\Mustafo stuff\Intel\technical\optimum-intel\venv\Lib\site-packages\transformers\integrations\sdpa_attention.py:47: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+    is_causal = query.shape[2] > 1 and causal_mask is None
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED tests/openvino/test_seq2seq.py::OVModelForVisualCausalLMIntegrationTest::test_compare_to_transformers_17_minicpmo
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!
+======================= 1 failed, 19 warnings in 52.04s =======================

@@ -130,7 +130,10 @@ MODEL_NAMES = {
     "minicpm": "optimum-intel-internal-testing/tiny-random-minicpm",
     "minicpm3": "optimum-intel-internal-testing/tiny-random-minicpm3",
     "minicpmv": "optimum-intel-internal-testing/tiny-random-minicpmv-2_6",
-    "minicpmo": "C:/Users/jumpy/Desktop/Mustafo stuff/Intel/technical/tiny-minicpm-task/tiny-random-MiniCPM-o-2_6-minicpmo-testing-50k-int4",    
+    "minicpmo": os.getenv(
+        "MINICPMO_MODEL_PATH",
+        "optimum-intel-internal-testing/tiny-random-MiniCPM-o-2_6-6mb"
+    ),    
     "mistral": "optimum-intel-internal-testing/tiny-random-mistral",
     "mistral-nemo": "optimum-intel-internal-testing/tiny-random-mistral-nemo",
     "mixtral": "optimum-intel-internal-testing/tiny-mixtral",

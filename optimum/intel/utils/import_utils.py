@@ -32,8 +32,15 @@ logger = logging.getLogger(__name__)
 
 STR_OPERATION_TO_FUNC = {">": op.gt, ">=": op.ge, "==": op.eq, "!=": op.ne, "<=": op.le, "<": op.lt}
 
-_optimum_version = importlib_metadata.version("optimum")
-_optimum_intel_version = importlib_metadata.version("optimum-intel")
+try:
+    _optimum_version = importlib_metadata.version("optimum")
+except:
+    _optimum_version = "0.0.0"  # Default if not installed as package
+
+try:
+    _optimum_intel_version = importlib_metadata.version("optimum-intel")
+except:
+    _optimum_intel_version = "0.0.0"  # Default if not installed as package
 
 _transformers_available = importlib.util.find_spec("transformers") is not None
 _transformers_version = "N/A"
